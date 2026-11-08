@@ -1,26 +1,115 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
+@theme {
+  --font-sans: var(--font-montserrat), ui-sans-serif, system-ui, sans-serif;
+  --font-display: var(--font-bebas), Impact, "Arial Narrow", sans-serif;
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
+  --color-brand: #100694;
+  --color-brand-600: #1a0fb0;
+  --color-brand-50: #f1f0fb;
+  --color-brand-100: #e3e1f7;
+  --color-accent: #e84b37;
+  --color-accent-600: #d23c29;
+  --color-cream: #efeae4;
+  --color-ink: #141233;
+  --color-muted: #5b5a73;
+  --color-gold: #f7c64a;
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+  --animate-marquee: marquee 45s linear infinite;
+  --animate-float: float 6s ease-in-out infinite;
+  --animate-twinkle: twinkle 4s ease-in-out infinite;
+
+  @keyframes marquee {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+  }
+  @keyframes float {
+    0%, 100% { transform: translateY(0) rotate(-0.4deg); }
+    50% { transform: translateY(-10px) rotate(0.4deg); }
+  }
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: none; }
+  }
+  @keyframes ringPulse {
+    0%, 100% { opacity: 1; scale: 1; }
+    50% { opacity: 0.55; scale: 1.03; }
+  }
+  @keyframes nudge {
+    0%, 70%, 100% { transform: rotate(0) scale(1); }
+    76% { transform: rotate(-7deg) scale(1.06); }
+    82% { transform: rotate(6deg) scale(1.06); }
+    88% { transform: rotate(-3deg) scale(1.03); }
+    94% { transform: rotate(2deg); }
+  }
+  @keyframes dotFill {
+    from { transform: scaleX(0); }
+    to { transform: scaleX(1); }
+  }
+  @keyframes nudgeUp {
+    0%, 100% { transform: translateY(1px); }
+    50% { transform: translateY(-2px); }
+  }
+  @keyframes twinkle {
+    0%, 100% { opacity: 0.85; }
+    50% { opacity: 0.45; }
   }
 }
 
+html {
+  scroll-padding-top: 88px;
+}
+
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  overflow-x: hidden;
+}
+
+/* Hero gradient requested: #100694 → #000000 */
+.hero-gradient {
+  background: linear-gradient(180deg, #100694 0%, #0a0460 45%, #000000 100%);
+}
+
+/* Diagonal PFEC stripes band: seamless SVG tile matching /bar/pfec-bar.png (the PNG has hard edges and shows seams when repeated) */
+.stripe-band {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='480' height='237' viewBox='0 0 480 237'%3E%3Cpolygon fill='%23c9c9e2' points='-85,0 35,0 -40,237 -160,237'/%3E%3Cpolygon fill='%23100694' points='75,0 195,0 120,237 0,237'/%3E%3Cpolygon fill='%23908ec0' points='235,0 355,0 280,237 160,237'/%3E%3Cpolygon fill='%23c9c9e2' points='395,0 515,0 440,237 320,237'/%3E%3C/svg%3E");
+  background-repeat: repeat-x;
+  background-size: auto 100%;
+}
+
+/* Scroll reveal */
+.reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.7s ease, transform 0.7s cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+.reveal.is-visible {
+  opacity: 1;
+  transform: none;
+}
+
+.marquee-mask {
+  mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+}
+
+.group:hover .animate-marquee {
+  animation-play-state: paused;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation: none !important;
+    transition: none !important;
+  }
+  .reveal {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* Gold sparkle overlay: screen-blend and feather edges so the image box never shows */
+.sparkle {
+  mix-blend-mode: screen;
+  mask-image: radial-gradient(closest-side, #000 55%, transparent 100%);
 }
