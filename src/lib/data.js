@@ -126,6 +126,7 @@ export const avatars = [
   "/avater/avatwe1.png",
   "/avater/avater2.png",
   "/avater/avater3.png",
+  "/avater/avater4.png",
 ];
 
 export const lifeBenefits = [
@@ -155,10 +156,9 @@ export const documents = [
   { label: "Job experience certificate (if any)", icon: "briefcase" },
 ];
 
-// NOTE: the design's 3rd photo (graduate student) is not in /public yet — girl.png is a stand-in.
 export const audience = [
   { img: "/avater/avatwe1.png", label: ["Students Planning", "to Study Abroad"] },
   { img: "/avater/avater3.png", label: ["Students Preparing for IELTS,", "PTE, or Other English Tests"] },
-  { img: "/avater/girl.png", label: ["Students Looking for", "Scholarships"], cutout: true },
+  { img: "/avater/avater4.png", label: ["Students Looking for", "Scholarships"] },
   { img: "/avater/avater2.png", label: ["Parents Seeking", "Reliable Guidance"] },
 ];

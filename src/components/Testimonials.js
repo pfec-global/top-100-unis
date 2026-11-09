@@ -76,18 +76,50 @@ export default function Testimonials() {
     return () => clearTimeout(t);
   }, [index, paused, reduced, go]);
 
-  // Swipe / drag.
+  // Swipe / drag (touch + mouse): the track follows the pointer, then snaps.
+  const [dragX, setDragX] = useState(0);
+  const [dragging, setDragging] = useState(false);
+  const suppressClick = useRef(false);
+
   const onPointerDown = (e) => {
-    drag.current = { x: e.clientX, dx: 0 };
+    if (e.pointerType === "mouse" && e.button !== 0) return;
+    suppressClick.current = false;
+    drag.current = { id: e.pointerId, x: e.clientX, y: e.clientY, t: performance.now(), dx: 0, axis: null };
     setPaused(true);
   };
   const onPointerMove = (e) => {
-    if (drag.current) drag.current.dx = e.clientX - drag.current.x;
+    const d = drag.current;
+    if (!d || e.pointerId !== d.id) return;
+    const dx = e.clientX - d.x;
+    const dy = e.clientY - d.y;
+    if (!d.axis) {
+      if (Math.abs(dx) < 6 && Math.abs(dy) < 6) return;
+      d.axis = Math.abs(dx) > Math.abs(dy) ? "x" : "y";
+      if (d.axis === "y") {
+        // vertical intent: let the page scroll
+        drag.current = null;
+        return;
+      }
+      e.currentTarget.setPointerCapture?.(e.pointerId);
+      setDragging(true);
+    }
+    d.dx = dx;
+    setDragX(dx);
   };
-  const onPointerUp = () => {
+  const endDrag = (cancelled) => {
     const d = drag.current;
     drag.current = null;
-    if (d && Math.abs(d.dx) > 50) go(d.dx < 0 ? 1 : -1);
+    if (d?.axis === "x" && step) {
+      const v = d.dx / Math.max(1, performance.now() - d.t); // px per ms
+      let n = Math.round(-d.dx / step); // whole cards dragged past
+      if (n === 0 && !cancelled && (Math.abs(d.dx) > step * 0.15 || Math.abs(v) > 0.4)) n = d.dx < 0 ? 1 : -1;
+      n = Math.max(-N, Math.min(N, n));
+      setAnimate(true);
+      if (n) setIndex((i) => i + n);
+      suppressClick.current = true;
+    }
+    setDragging(false);
+    setDragX(0);
     if (window.matchMedia("(hover: none)").matches) setPaused(false);
   };
 
@@ -122,8 +154,7 @@ export default function Testimonials() {
           className="mt-8 [clip-path:inset(-40px_-100vw_-40px_0)]"
           onMouseEnter={() => setPaused(true)}
           onMouseLeave={() => {
-            setPaused(false);
-            drag.current = null;
+            if (!drag.current) setPaused(false);
           }}
           onFocus={() => setPaused(true)}
           onBlur={() => setPaused(false)}
@@ -131,13 +162,23 @@ export default function Testimonials() {
           aria-label="Student testimonials"
         >
           <div
-            className={`flex touch-pan-y select-none ${animate ? "transition-transform duration-700 ease-[cubic-bezier(0.65,0,0.35,1)]" : ""}`}
-            style={{ gap: GAP, transform: `translate3d(${-index * step}px,0,0)` }}
+            className={`flex touch-pan-y select-none ${dragging ? "cursor-grabbing" : "cursor-grab"} ${
+              animate && !dragging ? "transition-transform duration-700 ease-[cubic-bezier(0.65,0,0.35,1)]" : ""
+            }`}
+            style={{ gap: GAP, transform: `translate3d(${-index * step + dragX}px,0,0)` }}
             onTransitionEnd={onTransitionEnd}
             onPointerDown={onPointerDown}
             onPointerMove={onPointerMove}
-            onPointerUp={onPointerUp}
-            onPointerCancel={() => (drag.current = null)}
+            onPointerUp={() => endDrag(false)}
+            onPointerCancel={() => endDrag(true)}
+            onClickCapture={(e) => {
+              if (suppressClick.current) {
+                e.preventDefault();
+                e.stopPropagation();
+                suppressClick.current = false;
+              }
+            }}
+            onDragStart={(e) => e.preventDefault()}
           >
             {slides.map((t, i) => {
               const isActive = i === index;
