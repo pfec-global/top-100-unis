@@ -27,10 +27,11 @@ export const viewport = {
 export default function RootLayout({ children }) {
   return (
     <html
+      suppressHydrationWarning
       lang="en"
       className={`${bebas.variable} ${montserrat.variable} scroll-smooth antialiased`}
     >
-      <body className="min-h-full bg-white font-sans text-ink">{children}</body>
+      <body suppressHydrationWarning className="min-h-full bg-white font-sans text-ink">{children}</body>
     </html>
   );
 }

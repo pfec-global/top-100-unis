@@ -6,7 +6,7 @@ import { useRegisterModal } from "./RegisterModal";
 const sizes = {
   sm: "h-9 px-4 text-xs",
   md: "h-11 px-6 text-sm",
-  lg: "h-13 px-8 text-base",
+  lg: "h-12 px-5 text-[15px] sm:h-13 sm:px-8 sm:text-base",
 };
 
 const variants = {
@@ -23,7 +23,7 @@ export default function CtaButton({ children = "Register for Free", size = "md",
       type="button"
       onClick={open}
       aria-haspopup="dialog"
-      className={`group/btn inline-flex cursor-pointer items-center justify-center gap-2 rounded-lg font-semibold transition-all duration-300 hover:-translate-y-0.5 ${variants[variant]} focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent ${sizes[size]} ${className}`}
+      className={`group/btn inline-flex shrink-0 cursor-pointer whitespace-nowrap items-center justify-center gap-2 rounded-lg font-semibold transition-all duration-300 hover:-translate-y-0.5 ${variants[variant]} focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent ${sizes[size]} ${className}`}
     >
       {children}
       {arrow && <Icon name="arrow" className="size-4 transition-transform duration-300 group-hover/btn:translate-x-1" />}
