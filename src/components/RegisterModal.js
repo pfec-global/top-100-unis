@@ -117,7 +117,7 @@ export default function RegisterModalProvider({ children }) {
             </div>
 
             {/* Form side */}
-            <div className="relative overflow-y-auto p-6 sm:p-8">
+            <div className="relative max-h-[92dvh] min-h-0 overflow-y-auto overscroll-contain p-6 sm:p-8">
               <div aria-hidden className="mx-auto mb-4 h-1.5 w-12 rounded-full bg-ink/15 sm:hidden" />
               <button
                 type="button"

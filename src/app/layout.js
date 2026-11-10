@@ -18,6 +18,11 @@ export const metadata = {
   title: "Apply to the World's Top 100 Universities | PFEC Global",
   description:
     "Check your eligibility for the world's top 100 universities. Get expert guidance and FREE end-to-end application assistance from PFEC Global.",
+  robots: {
+    index: false,
+    follow: false,
+    googleBot: { index: false, follow: false },
+  },
 };
 
 export const viewport = {
