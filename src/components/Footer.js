@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { asset } from "@/lib/asset";
 import CountUp from "./CountUp";
 import CtaButton from "./CtaButton";
 import Reveal from "./Reveal";
@@ -27,7 +28,7 @@ export default function Footer() {
         <div className="mx-auto grid max-w-7xl items-center gap-10 px-4 sm:px-6 lg:grid-cols-[1fr_auto] lg:gap-16 lg:px-10">
           <Reveal>
             <Image
-              src="/pfec_footer.png"
+              src={asset("/pfec_footer.png")}
               alt="PFEC Global – Study Abroad | Visa"
               width={395}
               height={153}

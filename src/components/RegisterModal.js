@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import { asset } from "@/lib/asset";
 import { createContext, useCallback, useContext, useEffect, useRef, useState } from "react";
 import Icon from "./Icon";
 import LeadForm from "./LeadForm";
@@ -97,7 +98,7 @@ export default function RegisterModalProvider({ children }) {
           >
             {/* Brand side (desktop) */}
             <div className="hero-gradient relative hidden overflow-hidden md:flex md:flex-col md:justify-between md:p-8">
-              <Image src="/banner_hero.png" alt="" aria-hidden width={626} height={358} className="sparkle pointer-events-none absolute -bottom-10 -left-10 w-[140%] max-w-none opacity-80" />
+              <Image src={asset("/banner_hero.png")} alt="" aria-hidden width={626} height={358} className="sparkle pointer-events-none absolute -bottom-10 -left-10 w-[140%] max-w-none opacity-80" />
               <div aria-hidden className="stripe-band absolute top-[42%] -right-10 h-16 w-[80%] opacity-40" />
               <div className="relative">
                 <p className="text-xs font-semibold tracking-[0.2em] text-accent uppercase">Free Profile Assessment</p>
@@ -113,7 +114,7 @@ export default function RegisterModalProvider({ children }) {
                   ))}
                 </ul>
               </div>
-              <Image src="/avater/girl.png" alt="" aria-hidden width={1200} height={628} className="relative -mx-8 -mb-8 mt-6 w-[calc(100%+4rem)] max-w-none" />
+              <Image src={asset("/avater/girl.png")} alt="" aria-hidden width={1200} height={628} className="relative -mx-8 -mb-8 mt-6 w-[calc(100%+4rem)] max-w-none" />
             </div>
 
             {/* Form side */}

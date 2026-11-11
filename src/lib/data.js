@@ -1,51 +1,53 @@
+import { asset } from "./asset";
+
 export const marqueeUniversities = [
-  { src: "/all_uni/uni7.png", name: "UNSW Sydney – 19th in the World", w: 464 },
-  { src: "/all_uni/uni8.png", name: "The University of Sydney – 28th in the World", w: 521 },
-  { src: "/all_uni/uni3.png", name: "Monash University – 31st in the World", w: 521 },
-  { src: "/all_uni/uni2.png", name: "The University of Queensland – 40th in the World", w: 524 },
-  { src: "/all_uni/uni12.png", name: "The University of Manchester – 40th in the World", w: 342 },
-  { src: "/all_uni/uni1.png", name: "Australian National University – 45th in the World", w: 521 },
-  { src: "/all_uni/uni9.png", name: "The University of British Columbia – 45th in the World", w: 531 },
-  { src: "/all_uni/uni10.png", name: "University of Bristol – 57th in the World", w: 342 },
-  { src: "/all_uni/uni11.png", name: "University of Birmingham – 68th in the World", w: 342 },
-  { src: "/all_uni/uni4.png", name: "The University of Western Australia – 77th in the World", w: 521 },
-  { src: "/all_uni/uni5.png", name: "Adelaide University – 79th in the World", w: 521 },
-  { src: "/all_uni/uni13.png", name: "University of Glasgow – 80th in the World", w: 342 },
-  { src: "/all_uni/uni6.png", name: "University of Technology Sydney – 87th in the World", w: 521 },
+  { src: asset("/all_uni/uni7.png"), name: "UNSW Sydney – 19th in the World", w: 464 },
+  { src: asset("/all_uni/uni8.png"), name: "The University of Sydney – 28th in the World", w: 521 },
+  { src: asset("/all_uni/uni3.png"), name: "Monash University – 31st in the World", w: 521 },
+  { src: asset("/all_uni/uni2.png"), name: "The University of Queensland – 40th in the World", w: 524 },
+  { src: asset("/all_uni/uni12.png"), name: "The University of Manchester – 40th in the World", w: 342 },
+  { src: asset("/all_uni/uni1.png"), name: "Australian National University – 45th in the World", w: 521 },
+  { src: asset("/all_uni/uni9.png"), name: "The University of British Columbia – 45th in the World", w: 531 },
+  { src: asset("/all_uni/uni10.png"), name: "University of Bristol – 57th in the World", w: 342 },
+  { src: asset("/all_uni/uni11.png"), name: "University of Birmingham – 68th in the World", w: 342 },
+  { src: asset("/all_uni/uni4.png"), name: "The University of Western Australia – 77th in the World", w: 521 },
+  { src: asset("/all_uni/uni5.png"), name: "Adelaide University – 79th in the World", w: 521 },
+  { src: asset("/all_uni/uni13.png"), name: "University of Glasgow – 80th in the World", w: 342 },
+  { src: asset("/all_uni/uni6.png"), name: "University of Technology Sydney – 87th in the World", w: 521 },
 ];
 
 export const destinations = [
   {
     id: "australia",
     country: "Australia",
-    flag: "/country_flag/australia.png",
+    flag: asset("/country_flag/australia.png"),
     unis: [
-      { src: "/au_uni/au_uni_1.png", name: "Australian National University – 45th in the World" },
-      { src: "/au_uni/au_uni_2.png", name: "The University of Queensland – 40th in the World" },
-      { src: "/au_uni/au_uni_3.png", name: "Monash University – 31st in the World" },
-      { src: "/au_uni/au_uni_4.png", name: "The University of Western Australia – 77th in the World" },
-      { src: "/au_uni/au_uni_5.png", name: "Adelaide University – 79th in the World" },
-      { src: "/au_uni/au_uni_6.png", name: "University of Technology Sydney – 87th in the World" },
-      { src: "/au_uni/au_uni_7.png", name: "UNSW Sydney – 19th in the World" },
-      { src: "/au_uni/au_uni_8.png", name: "The University of Sydney – 28th in the World" },
+      { src: asset("/au_uni/au_uni_1.png"), name: "Australian National University – 45th in the World" },
+      { src: asset("/au_uni/au_uni_2.png"), name: "The University of Queensland – 40th in the World" },
+      { src: asset("/au_uni/au_uni_3.png"), name: "Monash University – 31st in the World" },
+      { src: asset("/au_uni/au_uni_4.png"), name: "The University of Western Australia – 77th in the World" },
+      { src: asset("/au_uni/au_uni_5.png"), name: "Adelaide University – 79th in the World" },
+      { src: asset("/au_uni/au_uni_6.png"), name: "University of Technology Sydney – 87th in the World" },
+      { src: asset("/au_uni/au_uni_7.png"), name: "UNSW Sydney – 19th in the World" },
+      { src: asset("/au_uni/au_uni_8.png"), name: "The University of Sydney – 28th in the World" },
     ],
   },
   {
     id: "uk",
     country: "United Kingdom",
-    flag: "/country_flag/united%20kingdom.png",
+    flag: asset("/country_flag/united%20kingdom.png"),
     unis: [
-      { src: "/uk_uni/uk_uni_3.png", name: "The University of Manchester – 40th in the World" },
-      { src: "/uk_uni/uk_uni_1.png", name: "University of Bristol – 57th in the World" },
-      { src: "/uk_uni/uk_uni_2.png", name: "University of Birmingham – 68th in the World" },
-      { src: "/uk_uni/uk_uni_4.png", name: "University of Glasgow – 80th in the World" },
+      { src: asset("/uk_uni/uk_uni_3.png"), name: "The University of Manchester – 40th in the World" },
+      { src: asset("/uk_uni/uk_uni_1.png"), name: "University of Bristol – 57th in the World" },
+      { src: asset("/uk_uni/uk_uni_2.png"), name: "University of Birmingham – 68th in the World" },
+      { src: asset("/uk_uni/uk_uni_4.png"), name: "University of Glasgow – 80th in the World" },
     ],
   },
   {
     id: "canada",
     country: "Canada",
-    flag: "/country_flag/canada.png",
-    unis: [{ src: "/ca_uni/ca_uni.png", name: "The University of British Columbia – 45th in the World", w: 345, h: 98 }],
+    flag: asset("/country_flag/canada.png"),
+    unis: [{ src: asset("/ca_uni/ca_uni.png"), name: "The University of British Columbia – 45th in the World", w: 345, h: 98 }],
   },
 ];
 
@@ -93,7 +95,7 @@ export const steps = [
 
 export const testimonials = [
   {
-    img: "/testimonial/testimonial1.png",
+    img: asset("/testimonial/testimonial1.png"),
     w: 1277,
     h: 1231,
     quote:
@@ -102,7 +104,7 @@ export const testimonials = [
     meta: "Manipal Academy of Higher Education - Dubai Campus",
   },
   {
-    img: "/testimonial/testimonial2.png",
+    img: asset("/testimonial/testimonial2.png"),
     w: 1086,
     h: 1448,
     quote:
@@ -112,7 +114,7 @@ export const testimonials = [
   },
   {
     // TODO: placeholder — replace with this student's real testimonial, name and university.
-    img: "/testimonial/testimonial3.png",
+    img: asset("/testimonial/testimonial3.png"),
     w: 1455,
     h: 1081,
     quote:
@@ -123,10 +125,10 @@ export const testimonials = [
 ];
 
 export const avatars = [
-  "/avater/avatwe1.png",
-  "/avater/avater2.png",
-  "/avater/avater3.png",
-  "/avater/avater4.png",
+  asset("/avater/avatwe1.png"),
+  asset("/avater/avater2.png"),
+  asset("/avater/avater3.png"),
+  asset("/avater/avater4.png"),
 ];
 
 export const lifeBenefits = [
@@ -157,8 +159,8 @@ export const documents = [
 ];
 
 export const audience = [
-  { img: "/avater/avatwe1.png", label: ["Students Planning", "to Study Abroad"] },
-  { img: "/avater/avater3.png", label: ["Students Preparing for IELTS,", "PTE, or Other English Tests"] },
-  { img: "/avater/avater4.png", label: ["Students Looking for", "Scholarships"] },
-  { img: "/avater/avater2.png", label: ["Parents Seeking", "Reliable Guidance"] },
+  { img: asset("/avater/avatwe1.png"), label: ["Students Planning", "to Study Abroad"] },
+  { img: asset("/avater/avater3.png"), label: ["Students Preparing for IELTS,", "PTE, or Other English Tests"] },
+  { img: asset("/avater/avater4.png"), label: ["Students Looking for", "Scholarships"] },
+  { img: asset("/avater/avater2.png"), label: ["Parents Seeking", "Reliable Guidance"] },
 ];

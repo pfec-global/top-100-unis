@@ -1,5 +1,6 @@
 import { Bebas_Neue, Montserrat } from "next/font/google";
 import "./globals.css";
+import { asset } from "@/lib/asset";
 
 const bebas = Bebas_Neue({
   variable: "--font-bebas",
@@ -18,6 +19,10 @@ export const metadata = {
   title: "Apply to the World's Top 100 Universities | PFEC Global",
   description:
     "Check your eligibility for the world's top 100 universities. Get expert guidance and FREE end-to-end application assistance from PFEC Global.",
+  icons: {
+    icon: { url: asset("/PFEC-Favicon.webp"), type: "image/webp" },
+    apple: asset("/PFEC-Favicon.webp"),
+  },
   robots: {
     index: false,
     follow: false,

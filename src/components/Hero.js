@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { asset } from "@/lib/asset";
 import CtaButton from "./CtaButton";
 import { avatars } from "@/lib/data";
 
@@ -52,7 +53,7 @@ export default function Hero() {
         <div className="relative mt-10 pb-10 sm:mt-14 sm:pb-14 lg:mt-12">
           {/* gold sparkles */}
           <Image
-            src="/banner_hero.png"
+            src={asset("/banner_hero.png")}
             alt=""
             aria-hidden
             width={626}
@@ -60,7 +61,7 @@ export default function Hero() {
             className="animate-twinkle pointer-events-none absolute bottom-0 left-0 w-[70%] max-w-[620px] sparkle sm:w-[45%]"
           />
           <Image
-            src="/banner_hero.png"
+            src={asset("/banner_hero.png")}
             alt=""
             aria-hidden
             width={626}
@@ -79,7 +80,7 @@ export default function Hero() {
           <div className="relative z-10 mx-auto w-[92%] max-w-[640px] animate-float">
             <div className="absolute -inset-4 -z-10 rounded-3xl bg-[#5b4dff]/30 blur-2xl" aria-hidden />
             <Image
-              src="/banner_ticket.png"
+              src={asset("/banner_ticket.png")}
               alt="Boarding pass: Bangladesh to Top 100 Universities in the World. Passenger: You. Free expert guidance from PFEC Global. Class: Student, Seat: Reserved."
               width={2481}
               height={1063}

@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { asset } from "@/lib/asset";
 import CtaButton from "./CtaButton";
 import Documents from "./Documents";
 import Reveal from "./Reveal";
@@ -40,7 +41,7 @@ export default function LifeChanging() {
               <span className="absolute top-1/2 left-1/2 aspect-square w-[min(300px,60%)] -translate-x-1/2 -translate-y-1/2 rounded-full bg-white/50 blur-2xl" />
             </div>
             <Image
-              src="/avater/girl.png"
+              src={asset("/avater/girl.png")}
               alt="Smiling student holding books, ready to study abroad"
               width={1200}
               height={628}
