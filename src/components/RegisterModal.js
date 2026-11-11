@@ -43,7 +43,6 @@ export default function RegisterModalProvider({ children }) {
     document.body.style.paddingRight = `${scrollbar}px`;
 
     const onKey = (e) => {
-      if (e.key === "Escape") close();
       if (e.key === "Tab" && panelRef.current) {
         const els = panelRef.current.querySelectorAll("a[href],button:not([disabled]),input,select,textarea");
         if (!els.length) return;
@@ -77,7 +76,6 @@ export default function RegisterModalProvider({ children }) {
         <div className="fixed inset-0 z-[100] flex items-end justify-center sm:items-center sm:p-6" role="presentation">
           {/* backdrop */}
           <div
-            onClick={close}
             aria-hidden
             className={`absolute inset-0 bg-[#05022a]/70 backdrop-blur-sm transition-opacity duration-300 ${
               visible ? "opacity-100" : "opacity-0"
@@ -90,10 +88,10 @@ export default function RegisterModalProvider({ children }) {
             role="dialog"
             aria-modal="true"
             aria-labelledby="register-modal-title"
-            className={`relative grid max-h-[92dvh] w-full max-w-[880px] overflow-hidden rounded-t-3xl bg-white shadow-[0_40px_100px_-30px_rgba(5,2,42,0.8)] transition-all duration-300 ease-[cubic-bezier(0.2,0.8,0.2,1)] sm:rounded-3xl md:grid-cols-[0.9fr_1fr] ${
+            className={`relative grid max-h-[92dvh] w-full max-w-[880px] overflow-hidden rounded-t-3xl bg-white shadow-[0_40px_100px_-30px_rgba(5,2,42,0.8)] origin-bottom transition-[scale,opacity] will-change-[scale,opacity] sm:origin-center sm:rounded-3xl md:grid-cols-[0.9fr_1fr] ${
               visible
-                ? "translate-y-0 opacity-100 sm:scale-100"
-                : "translate-y-full opacity-0 sm:translate-y-6 sm:scale-95"
+                ? "scale-100 opacity-100 duration-500 ease-[cubic-bezier(0.16,1,0.3,1)]"
+                : "scale-90 opacity-0 duration-300 ease-[cubic-bezier(0.4,0,0.2,1)]"
             }`}
           >
             {/* Brand side (desktop) */}

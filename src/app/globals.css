@@ -87,6 +87,20 @@ body {
   transform: none;
 }
 
+/* "TOP 100" underline: fills left → right like a progress bar, then repeats */
+.underline-progress {
+  stroke-dasharray: 1;
+  stroke-dashoffset: 0;
+  animation: underlineProgress 2.4s cubic-bezier(0.65, 0, 0.35, 1) 0.8s infinite both;
+}
+@keyframes underlineProgress {
+  0% { stroke-dashoffset: 1; opacity: 0; }
+  5% { opacity: 1; }
+  50% { stroke-dashoffset: 0; }
+  85% { stroke-dashoffset: 0; opacity: 1; }
+  100% { stroke-dashoffset: 0; opacity: 0; }
+}
+
 .marquee-mask {
   mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
 }

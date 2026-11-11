@@ -5,7 +5,7 @@ import { destinations } from "@/lib/data";
 
 export default function Destinations() {
   return (
-    <section id="destinations" className="bg-[#f3f2f8] py-16 sm:py-24">
+    <section id="universities" className="bg-[#f3f2f8] py-16 sm:py-24">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-10">
         <Reveal className="mx-auto max-w-4xl text-center">
           <h2 className="text-2xl leading-tight font-bold text-ink sm:text-3xl lg:text-[32px]">

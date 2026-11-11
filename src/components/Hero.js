@@ -18,7 +18,7 @@ export default function Hero() {
             the world&rsquo;s <span className="relative inline-block text-white">
               top 100
               <svg aria-hidden viewBox="0 0 200 12" preserveAspectRatio="none" className="absolute -bottom-1 left-0 h-2.5 w-full text-accent">
-                <path d="M2 9C50 3 150 3 198 8" fill="none" stroke="currentColor" strokeWidth="4" strokeLinecap="round" />
+                <path d="M2 9C50 3 150 3 198 8" pathLength="1" className="underline-progress" fill="none" stroke="currentColor" strokeWidth="4" strokeLinecap="round" />
               </svg>
             </span>
             <br />

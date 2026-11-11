@@ -7,7 +7,7 @@ import CtaButton from "./CtaButton";
 
 const links = [
   { href: "#why", label: "Why PFEC" },
-  { href: "#destinations", label: "Universities" },
+  { href: "#universities", label: "Universities" },
   { href: "#process", label: "How it Works" },
   { href: "#stories", label: "Success Stories" },
 ];
