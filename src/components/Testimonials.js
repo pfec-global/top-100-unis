@@ -6,7 +6,7 @@ import Icon from "./Icon";
 import Reveal from "./Reveal";
 import { testimonials } from "@/lib/data";
 
-const AUTOPLAY_MS = 5000;
+const AUTOPLAY_MS = 3000;
 const GAP = 20; // px between cards
 const N = testimonials.length;
 // Render the list 3× so the slider can loop forever; we live in the middle copy.
@@ -206,7 +206,20 @@ export default function Testimonials() {
                   <div className="flex flex-col justify-center px-2 pt-5 pb-2 sm:px-5 sm:py-3">
                     <p className="text-[13px] leading-relaxed text-white/90">{t.quote}</p>
                     <p className="mt-4 text-sm font-bold tracking-wide text-[#FFC727] uppercase">{t.name}</p>
-                    <p className="mt-1 text-xs text-white/60">{t.meta}</p>
+                    <p className="mt-1 text-xs font-medium text-white/80">{t.subject}</p>
+                    <p className="mt-0.5 text-xs text-white/60">
+                      {t.university}, {t.country}
+                    </p>
+                    <div className="mt-3 flex flex-wrap gap-1.5">
+                      {[t.scholarship, t.intake && `Intake: ${t.intake}`].filter(Boolean).map((tag) => (
+                        <span
+                          key={tag}
+                          className="rounded-full bg-white/10 px-2.5 py-1 text-[11px] font-medium text-[#FFC727]"
+                        >
+                          {tag}
+                        </span>
+                      ))}
+                    </div>
                   </div>
                 </article>
               );
