@@ -20,6 +20,14 @@ const nextConfig = {
       },
     },
   },
+  webpack(config) {
+    config.module.rules.push({
+      resource: /[\\/]src[\\/]app[\\/]globals\.css$/i,
+      enforce: "pre",
+      use: ["@tailwindcss/turbopack"],
+    });
+    return config;
+  },
 };
 
 export default nextConfig;

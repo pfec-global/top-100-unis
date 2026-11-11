@@ -110,6 +110,7 @@ export default function LeadForm({ submitLabel = "Register for FREE" }) {
 
   async function onSubmit(e) {
     e.preventDefault();
+    if (!e.currentTarget.reportValidity()) return;
     const body = new FormData(e.currentTarget);
     setStatus("sending");
     try {
@@ -168,7 +169,22 @@ export default function LeadForm({ submitLabel = "Register for FREE" }) {
       <input id={id("email")} name="Email" type="email" maxLength={255} required autoComplete="email" placeholder="Email" className={field} />
 
       <label className="sr-only" htmlFor={id("phone")}>Phone Number</label>
-      <input id={id("phone")} name="PhoneNumber_countrycode" type="tel" maxLength={20} required autoComplete="tel" placeholder="Phone Number" className={field} />
+      <input
+        id={id("phone")}
+        name="PhoneNumber_countrycode"
+        type="tel"
+        inputMode="numeric"
+        minLength={11}
+        maxLength={11}
+        pattern="[0-9]{11}"
+        title="Enter a phone number with exactly 11 digits."
+        required
+        autoComplete="tel"
+        placeholder="Phone Number (11 digits)"
+        onInvalid={(e) => e.currentTarget.setCustomValidity("Enter a phone number with exactly 11 digits.")}
+        onInput={(e) => e.currentTarget.setCustomValidity("")}
+        className={field}
+      />
 
       {SELECTS.map((s) => (
         <Select key={s.name} id={id(s.name)} {...s} />

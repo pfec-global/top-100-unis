@@ -192,15 +192,15 @@ export default function Testimonials() {
                     isActive || i === index + 1 ? "opacity-100" : "opacity-60"
                   }`}
                 >
-                  <div className="relative h-56 overflow-hidden rounded-xl bg-[#FFC727] sm:h-full sm:min-h-[200px]">
+                  <div className="relative self-start overflow-hidden rounded-xl bg-[#FFC727] sm:h-full sm:min-h-[200px] sm:self-stretch">
                     <Image
                       src={t.img}
                       alt={t.name}
                       width={t.w}
                       height={t.h}
                       draggable={false}
-                      sizes="(max-width: 640px) 86vw, 200px"
-                      className="pointer-events-none absolute inset-0 size-full object-cover object-top transition-transform duration-700 group-hover:scale-105"
+                      sizes="(max-width: 639px) calc(86vw - 24px), 180px"
+                      className="pointer-events-none block h-auto w-full object-top transition-transform duration-700 sm:absolute sm:inset-0 sm:size-full sm:object-cover sm:group-hover:scale-105"
                     />
                   </div>
                   <div className="flex flex-col justify-center px-2 pt-5 pb-2 sm:px-5 sm:py-3">
