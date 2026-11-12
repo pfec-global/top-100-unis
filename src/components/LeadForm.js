@@ -11,6 +11,22 @@ const UTM_KEYS = ["utm_source", "utm_medium", "utm_campaign", "utm_term", "utm_c
 // Field names + option values must match the Zoho form exactly.
 const SELECTS = [
   { name: "Dropdown7", label: "Your Nearest PFEC Office", options: ["Dhanmondi", "Banani", "Uttara", "Chattogram"] },
+  {
+    name: "Dropdown1",
+    label: "Your Preferred Study Destination",
+    options: [
+      "Australia",
+      "Canada",
+      "Europe",
+      "Ireland",
+      "Japan",
+      "Malaysia",
+      "New Zealand",
+      "Open to multiple destinations",
+      "UK",
+      "USA",
+    ],
+  },
   { name: "Dropdown3", label: "Your Preferred Study Year", options: ["2027", "2028", "2029", "2030"] },
   { name: "Dropdown5", label: "Your Preferred Study Level", options: ["Under Graduate", "Post Graduate"] },
   {
@@ -40,7 +56,7 @@ const SELECTS = [
   },
   {
     name: "Dropdown",
-    label: "Highest Completed Qualification",
+    label: "What is your highest completed qualification?",
     options: [
       "SSC / O Levels",
       "HSC / A Levels",
