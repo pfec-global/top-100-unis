@@ -4,7 +4,7 @@ import { useEffect, useId, useRef, useState } from "react";
 import Icon from "./Icon";
 
 const ZOHO_ACTION =
-  "https://forms.zohopublic.in/pfecglobal/form/PFECGlobalTop100UniversitiesEligibilityCheckFreeCo/formperma/MeutgscMV_HJ971vNkJqn5tuIVGbzXpduS63N6toFho/htmlRecords/submit";
+  "https://forms.zohopublic.in/pfecglobal/form/AreyoueligibletostudyattheworldsTop100Universities/formperma/dZA-SNr7Lbd8wZC5z6OOkYtIb8AYVjh2P4hZDXmro28/htmlRecords/submit";
 
 const UTM_KEYS = ["utm_source", "utm_medium", "utm_campaign", "utm_term", "utm_content"];
 
