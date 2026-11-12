@@ -442,9 +442,6 @@ export default function LeadForm({
                 id={id("phone")}
                 type="tel"
                 name="PhoneNumber_countrycode"
-                compname="PhoneNumber"
-                phoneFormat="1"
-                isCountryCodeEnabled={false}
                 placeholder="Enter 10 Digit Number"
                 maxLength={10}
                 minLength={10}
