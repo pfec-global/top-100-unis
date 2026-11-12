@@ -12,9 +12,8 @@ const stats = [
 ];
 
 const legal = [
-  { href: "#", label: "Terms & Conditions" },
-  { href: "#", label: "Privacy Policy" },
-  { href: "#", label: "Cookie Policy" },
+  { href: "https://pfecglobal.com.bd/terms-of-use/", label: "Terms & Conditions" },
+  { href: "https://pfecglobal.com.bd/privacy-policy/", label: "Privacy Policy" },
 ];
 
 export default function Footer() {
@@ -73,7 +72,7 @@ export default function Footer() {
           <p>&copy; {new Date().getFullYear()} PFEC Global | All Rights Reserved</p>
           <nav aria-label="Legal" className="flex flex-wrap justify-center gap-x-8 gap-y-2">
             {legal.map((l) => (
-              <a key={l.label} href={l.href} className="transition-colors hover:text-white">
+              <a key={l.label} href={l.href} target="_blank" rel="noopener noreferrer" className="transition-colors hover:text-white">
                 {l.label}
               </a>
             ))}

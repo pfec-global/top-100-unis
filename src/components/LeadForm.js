@@ -66,16 +66,16 @@ const SELECTS = [
 const field =
   "h-11 w-full rounded-lg border border-transparent bg-[#f1f3f7] px-4 text-sm text-ink placeholder:text-ink/45 outline-none transition focus:border-brand/40 focus:bg-white focus:ring-4 focus:ring-brand/10";
 
-function Select({ id, name, label, options }) {
+function Select({ id, name, label, options, className = "", fieldClass = "" }) {
   return (
-    <div className="relative">
+    <div className={`relative ${className}`}>
       <label className="sr-only" htmlFor={id}>{label}</label>
       <select
         id={id}
         name={name}
         required
         defaultValue=""
-        className={`${field} cursor-pointer appearance-none truncate pr-10 invalid:text-ink/45`}
+        className={`${field} ${fieldClass} cursor-pointer appearance-none truncate pr-10 invalid:text-ink/45`}
       >
         <option value="" disabled>{label}</option>
         {options.map((o) => (
@@ -89,7 +89,12 @@ function Select({ id, name, label, options }) {
   );
 }
 
-export default function LeadForm({ submitLabel = "Register for FREE" }) {
+// `wide`: used in the desktop modal — on lg+ screens fields sit in two columns
+// (grouped into sections) so the whole form fits without scrolling.
+export default function LeadForm({ submitLabel = "Register for FREE", wide = false }) {
+  const two = wide ? "lg:grid-cols-2 lg:gap-x-3 lg:gap-y-2.5" : "";
+  const f = wide ? `${field} lg:h-10` : field;
+  const heading = wide ? "hidden lg:flex lg:items-center lg:justify-between text-sm font-bold text-ink" : "hidden";
   const uid = useId();
   const id = (k) => `${uid}-${k}`;
   const formRef = useRef(null);
@@ -154,48 +159,65 @@ export default function LeadForm({ submitLabel = "Register for FREE" }) {
         <input key={k} type="hidden" name={k} defaultValue="" />
       ))}
 
-      <div className="grid grid-cols-2 gap-3">
-        <div>
-          <label className="sr-only" htmlFor={id("first")}>First Name</label>
-          <input id={id("first")} name="Name_First" maxLength={255} required autoComplete="given-name" placeholder="First Name" className={field} />
+      <div className={`grid gap-3 ${two}`}>
+        <p className={`${heading} lg:col-span-2`}>
+          Basic Details <span className="text-xs font-medium text-accent">*Mandatory fields</span>
+        </p>
+        <div className={`grid grid-cols-2 gap-3 ${wide ? "lg:contents" : ""}`}>
+          <div>
+            <label className="sr-only" htmlFor={id("first")}>First Name</label>
+            <input id={id("first")} name="Name_First" maxLength={255} required autoComplete="given-name" placeholder="First Name" className={f} />
+          </div>
+          <div>
+            <label className="sr-only" htmlFor={id("last")}>Last Name</label>
+            <input id={id("last")} name="Name_Last" maxLength={255} autoComplete="family-name" placeholder="Last Name" className={f} />
+          </div>
         </div>
+
         <div>
-          <label className="sr-only" htmlFor={id("last")}>Last Name</label>
-          <input id={id("last")} name="Name_Last" maxLength={255} autoComplete="family-name" placeholder="Last Name" className={field} />
+          <label className="sr-only" htmlFor={id("email")}>Email</label>
+          <input id={id("email")} name="Email" type="email" maxLength={255} required autoComplete="email" placeholder="Email" className={f} />
         </div>
+
+        <div>
+          <label className="sr-only" htmlFor={id("phone")}>Phone Number</label>
+          <input
+            id={id("phone")}
+            name="PhoneNumber_countrycode"
+            type="tel"
+            inputMode="numeric"
+            minLength={11}
+            maxLength={11}
+            pattern="[0-9]{11}"
+            title="Enter a phone number with exactly 11 digits."
+            required
+            autoComplete="tel"
+            placeholder="Phone Number (11 digits)"
+            onInvalid={(e) => e.currentTarget.setCustomValidity("Enter a phone number with exactly 11 digits.")}
+            onInput={(e) => e.currentTarget.setCustomValidity("")}
+            className={f}
+          />
+        </div>
+
+        <p className={`${heading} lg:col-span-2 lg:mt-2`}>Other Information</p>
+        {SELECTS.map((s, i) => (
+          <Select
+            key={s.name}
+            id={id(s.name)}
+            {...s}
+            fieldClass={wide ? "lg:h-10" : ""}
+            // odd one out spans the full row so the two-column grid stays even
+            className={wide && i === SELECTS.length - 1 && SELECTS.length % 2 ? "lg:col-span-2" : ""}
+          />
+        ))}
       </div>
-
-      <label className="sr-only" htmlFor={id("email")}>Email</label>
-      <input id={id("email")} name="Email" type="email" maxLength={255} required autoComplete="email" placeholder="Email" className={field} />
-
-      <label className="sr-only" htmlFor={id("phone")}>Phone Number</label>
-      <input
-        id={id("phone")}
-        name="PhoneNumber_countrycode"
-        type="tel"
-        inputMode="numeric"
-        minLength={11}
-        maxLength={11}
-        pattern="[0-9]{11}"
-        title="Enter a phone number with exactly 11 digits."
-        required
-        autoComplete="tel"
-        placeholder="Phone Number (11 digits)"
-        onInvalid={(e) => e.currentTarget.setCustomValidity("Enter a phone number with exactly 11 digits.")}
-        onInput={(e) => e.currentTarget.setCustomValidity("")}
-        className={field}
-      />
-
-      {SELECTS.map((s) => (
-        <Select key={s.name} id={id(s.name)} {...s} />
-      ))}
 
       <label className="mt-1 flex cursor-pointer items-center gap-2 text-xs text-ink/80">
         <input type="checkbox" required className="size-4 cursor-pointer accent-accent" />
         <span>
           I agree to the{" "}
-          <a href="#" className="text-accent underline underline-offset-2">privacy policy</a> and{" "}
-          <a href="#" className="text-accent underline underline-offset-2">Terms of Use</a>
+          <a href="https://pfecglobal.com.bd/privacy-policy/" target="_blank" rel="noopener noreferrer" className="text-accent underline underline-offset-2">privacy policy</a> and{" "}
+          <a href="https://pfecglobal.com.bd/terms-of-use/" target="_blank" rel="noopener noreferrer" className="text-accent underline underline-offset-2">Terms of Use</a>
         </span>
       </label>
 

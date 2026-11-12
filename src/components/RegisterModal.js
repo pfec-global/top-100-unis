@@ -88,7 +88,7 @@ export default function RegisterModalProvider({ children }) {
             role="dialog"
             aria-modal="true"
             aria-labelledby="register-modal-title"
-            className={`relative grid max-h-[92dvh] w-full max-w-[880px] overflow-hidden rounded-t-3xl bg-white shadow-[0_40px_100px_-30px_rgba(5,2,42,0.8)] origin-bottom transition-[scale,opacity] will-change-[scale,opacity] sm:origin-center sm:rounded-3xl md:grid-cols-[0.9fr_1fr] ${
+            className={`relative grid max-h-[92dvh] w-full max-w-[880px] lg:max-w-[1100px] overflow-hidden rounded-t-3xl bg-white shadow-[0_40px_100px_-30px_rgba(5,2,42,0.8)] origin-bottom transition-[scale,opacity] will-change-[scale,opacity] sm:origin-center sm:rounded-3xl md:grid-cols-[0.9fr_1fr] lg:grid-cols-[0.72fr_1.28fr] ${
               visible
                 ? "scale-100 opacity-100 duration-500 ease-[cubic-bezier(0.16,1,0.3,1)]"
                 : "scale-90 opacity-0 duration-300 ease-[cubic-bezier(0.4,0,0.2,1)]"
@@ -129,8 +129,8 @@ export default function RegisterModalProvider({ children }) {
                 </svg>
               </button>
               <h2 id="register-modal-title" className="pr-10 text-xl font-bold text-accent">Sign up for a Free Profile Assessment</h2>
-              <p className="mt-1 mb-6 text-sm text-muted">Find out if you qualify — it only takes a minute.</p>
-              <LeadForm />
+              <p className="mt-1 mb-6 text-sm text-muted lg:mb-4">Find out if you qualify — it only takes a minute.</p>
+              <LeadForm wide />
             </div>
           </div>
         </div>
