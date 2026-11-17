@@ -12,7 +12,9 @@ const links = [
   { href: "#stories", label: "Success Stories" },
 ];
 
-export default function Header() {
+// `homeHref`: set on other pages (e.g. thank-you) so the menu links point back to
+// the landing page sections. Leave empty on the landing page itself.
+export default function Header({ homeHref = "" }) {
   const [scrolled, setScrolled] = useState(false);
   const barRef = useRef(null);
 
@@ -45,7 +47,7 @@ export default function Header() {
       }`}
     >
       <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:h-[72px] sm:px-6 lg:px-10">
-        <a href="#top" aria-label="PFEC Global – home" className="shrink-0">
+        <a href={homeHref || "#top"} aria-label="PFEC Global – home" className="shrink-0">
           <Image src={asset("/pfec.png")} alt="PFEC Global – Study Abroad | Visa" width={589} height={236} priority className="h-9 w-auto sm:h-11" />
         </a>
 
@@ -53,7 +55,7 @@ export default function Header() {
           {links.map((l) => (
             <a
               key={l.href}
-              href={l.href}
+              href={`${homeHref}${l.href}`}
               className="relative text-sm font-medium text-ink/75 transition-colors hover:text-brand after:absolute after:-bottom-1 after:left-0 after:h-0.5 after:w-0 after:bg-accent after:transition-all hover:after:w-full"
             >
               {l.label}

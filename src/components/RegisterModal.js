@@ -97,7 +97,6 @@ export default function RegisterModalProvider({ children }) {
             {/* Brand side (desktop) */}
             <div className="hero-gradient relative hidden overflow-hidden md:flex md:flex-col md:justify-between md:p-8">
               <Image src={asset("/banner_hero.png")} alt="" aria-hidden width={626} height={358} className="sparkle pointer-events-none absolute -bottom-10 -left-10 w-[140%] max-w-none opacity-80" />
-              <div aria-hidden className="stripe-band absolute top-[42%] -right-10 h-16 w-[80%] opacity-40" />
               <div className="relative">
                 <p className="text-xs font-semibold tracking-[0.2em] text-accent uppercase">Free Profile Assessment</p>
                 <p className="mt-3 font-display text-5xl leading-[0.95] text-cream uppercase">Your seat at a top 100 university</p>
@@ -112,7 +111,17 @@ export default function RegisterModalProvider({ children }) {
                   ))}
                 </ul>
               </div>
-              <Image src={asset("/avater/girl.png")} alt="" aria-hidden width={1200} height={628} className="relative -mx-8 -mb-8 mt-6 w-[calc(100%+4rem)] max-w-none" />
+              {/* Girl + stripes: one block anchored to the bottom so they always line up */}
+              <div aria-hidden className="relative -mx-8 -mb-8 mt-6 h-[clamp(240px,42vh,420px)] shrink-0">
+                <div className="stripe-band absolute inset-x-0 top-[38%] h-16 opacity-40" />
+                <Image
+                  src={asset("/avater/girl.png")}
+                  alt=""
+                  width={1200}
+                  height={628}
+                  className="absolute bottom-0 left-1/2 h-full w-auto max-w-none -translate-x-[53%]"
+                />
+              </div>
             </div>
 
             {/* Form side */}

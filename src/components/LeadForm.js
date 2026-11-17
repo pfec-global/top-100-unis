@@ -2,6 +2,7 @@
 "use client";
 
 import { useEffect, useId, useRef, useState } from "react";
+import { useRouter } from "next/navigation";
 
 const ZOHO_ACTION =
   "https://forms.zohopublic.in/pfecglobal/form/AreyoueligibletostudyattheworldsTop100Universities/formperma/dZA-SNr7Lbd8wZC5z6OOkYtIb8AYVjh2P4hZDXmro28/htmlRecords/submit";
@@ -238,6 +239,13 @@ export default function LeadForm({
 
   const [status, setStatus] = useState("idle");
 
+  const router = useRouter();
+
+  // Load the thank-you page in advance so the redirect is instant
+  useEffect(() => {
+    router.prefetch("/thank-you/");
+  }, [router]);
+
   // UTM tracking and referrer
   useEffect(() => {
     const form = formRef.current;
@@ -314,6 +322,7 @@ export default function LeadForm({
       });
 
       setStatus("done");
+      router.push("/thank-you/");
     } catch (error) {
       console.error("Zoho submission error:", error);
       setStatus("error");
