@@ -493,7 +493,7 @@ export default function LeadForm({
             I have read and agree to PFEC Global's{" "}
 
             <a
-              href="/privacy-policy"
+              href="https://pfecglobal.com.bd/privacy-policy/"
               target="_blank"
               rel="noopener noreferrer"
               className="font-semibold text-[#100b91] underline"
@@ -504,7 +504,7 @@ export default function LeadForm({
             {" "}and{" "}
 
             <a
-              href="/terms-and-conditions"
+              href="https://pfecglobal.com.bd/terms-of-use/"
               target="_blank"
               rel="noopener noreferrer"
               className="font-semibold text-[#100b91] underline"
